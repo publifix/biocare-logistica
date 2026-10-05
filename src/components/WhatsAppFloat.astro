@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { whatsapp } from '../data/content';
+---
+<a
+  href={whatsapp.general}
+  target="_blank"
+  rel="noopener"
+  aria-label={whatsapp.floatLabel}
+  class="group fixed bottom-5 right-5 z-40 inline-flex size-14 items-center justify-center rounded-full bg-verde text-white shadow-[0_8px_24px_-6px_rgba(7,59,72,0.45)] transition-colors hover:bg-verde-hondo lg:bottom-8 lg:right-8"
+>
+  <Icon name="whatsapp" class="size-7" />
+  <span
+    class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-md bg-petroleo px-3 py-2 text-sm font-medium text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 sm:block"
+    aria-hidden="true"
+  >
+    {whatsapp.floatTooltip}
+  </span>
+</a>

@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { contact } from '../data/content';
+
+// TEXTO PROVISIONAL: el aviso de privacidad debe redactarlo o validarlo el cliente con su asesor legal
+// (razón social, domicilio, finalidades del tratamiento y medio para ejercer derechos ARCO).
+const sections = [
+  { h2: 'Responsable del tratamiento de tus datos', p: '[Razón social de BioCare Solución Logística], con domicilio en [domicilio completo], es responsable del tratamiento de los datos personales que nos proporcionas.' },
+  { h2: 'Datos personales que recabamos', p: 'A través del formulario de contacto recabamos: nombre, laboratorio o clínica, número de WhatsApp, correo electrónico, servicio de interés, número de puntos de recolección y la información de tu operación que decidas compartir.' },
+  { h2: 'Finalidades del tratamiento', p: '[Describir las finalidades primarias y secundarias, por ejemplo: responder tu solicitud, elaborar una propuesta de ruta y dar seguimiento comercial.]' },
+  { h2: 'Derechos ARCO', p: `Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición escribiendo a ${contact.email}. [Describir el procedimiento, plazos y requisitos de la solicitud.]` },
+  { h2: 'Cambios al aviso de privacidad', p: '[Indicar cómo se comunicarán las modificaciones a este aviso.]' },
+];
+---
+<Layout
+  title="Aviso de privacidad | BioCare Solución Logística"
+  description="Aviso de privacidad de BioCare Solución Logística."
+  path="aviso-de-privacidad/"
+  robots="noindex, follow"
+>
+  <Header />
+  <main id="contenido" tabindex="-1" class="bg-white pb-24 pt-32 outline-none lg:pt-40">
+    <article class="container-bc max-w-3xl">
+      <h1 class="text-4xl font-extrabold tracking-[-0.03em] text-verde sm:text-5xl">Aviso de privacidad</h1>
+      <div class="mt-8 rounded-xl border-2 border-dashed border-[#B45309] bg-[#FDF3E7] p-5 text-[0.9375rem] text-grafito" role="note">
+        <p><strong>Texto provisional.</strong> Este aviso debe reemplazarse por el texto legal redactado o validado por BioCare con su asesor. Los datos entre corchetes están pendientes.</p>
+      </div>
+      {sections.map((s) => (
+        <section class="mt-12">
+          <h2 class="text-2xl font-bold text-petroleo">{s.h2}</h2>
+          <p class="mt-4 leading-relaxed text-grafito">{s.p}</p>
+        </section>
+      ))}
+      <p class="mt-12 text-sm text-gris">Última actualización: [fecha].</p>
+    </article>
+  </main>
+  <Footer />
+</Layout>

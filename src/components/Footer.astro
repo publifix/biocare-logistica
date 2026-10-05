@@ -1,0 +1,81 @@
+---
+import Icon from './Icon.astro';
+import SpeedLines from './SpeedLines.astro';
+import { contact, footer, social, whatsapp } from '../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const home = (hash: string) => `${base}${hash}`;
+const linkClass = 'text-sobre-oscuro transition-colors hover:text-white';
+---
+<footer class="on-dark bg-petroleo text-sobre-oscuro">
+  <div class="container-bc pb-10 pt-16 lg:pt-20">
+    <div class="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] lg:gap-10">
+      <div class="max-w-sm">
+        <a href={home('#inicio')} class="inline-block">
+          <img
+            src={`${base}brand/biocare-logo-blanco-400.webp`}
+        srcset={`${base}brand/biocare-logo-blanco-200.webp 200w, ${base}brand/biocare-logo-blanco-400.webp 400w`}
+        sizes="200px"
+            width="400"
+            height="71"
+            alt={footer.logoAlt}
+            loading="lazy"
+            class="h-auto w-[200px]"
+          />
+        </a>
+        <p class="mt-8 text-[0.9375rem] leading-relaxed">{footer.description}</p>
+        <SpeedLines count={3} class="mt-8 w-24" />
+      </div>
+
+      {[footer.servicios, footer.empresa].map((col) => (
+        <nav aria-label={col.title}>
+          <p class="font-display text-base font-bold text-white">{col.title}</p>
+          <ul class="mt-5 space-y-3 text-[0.9375rem]">
+            {col.links.map((l) => (
+              <li><a href={home(l.href)} class={linkClass}>{l.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+
+      <div>
+        <p class="font-display text-base font-bold text-white">{footer.contactoTitle}</p>
+        <ul class="mt-5 space-y-3 text-[0.9375rem]">
+          <li>
+            <a href={whatsapp.general} target="_blank" rel="noopener" class={`${linkClass} inline-flex items-center gap-2.5`}>
+              <Icon name="whatsapp" class="size-5 shrink-0 text-menta" />WhatsApp {contact.phoneDisplay}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contact.email}`} class={`${linkClass} inline-flex items-center gap-2.5 break-all`}>
+              <Icon name="mail" class="size-5 shrink-0 text-menta" />{contact.email}
+            </a>
+          </li>
+          <li class="flex items-center gap-2.5"><Icon name="clock" class="size-5 shrink-0 text-menta" />{contact.hours}</li>
+          <li class="flex items-center gap-2.5"><Icon name="pin" class="size-5 shrink-0 text-menta" />{contact.coverage}</li>
+        </ul>
+        <ul class="mt-6 flex items-center gap-2" aria-label={`Redes sociales ${footer.socialHandle}`}>
+          {social.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex size-11 items-center justify-center rounded-md text-sobre-oscuro ring-1 ring-white/15 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <Icon name={s.icon} class="size-5" label={`${s.name} ${footer.socialHandle}`} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col gap-4 border-t border-white/15 pt-8 text-sm sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        {footer.legal} · <a href={`${base}aviso-de-privacidad/`} class="underline underline-offset-4 hover:text-white">{footer.privacy}</a>
+      </p>
+      <p>{footer.credit}</p>
+    </div>
+  </div>
+</footer>

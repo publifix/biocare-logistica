@@ -1,0 +1,372 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import SpeedLines from '../components/SpeedLines.astro';
+import {
+  site, hero, contexto, servicios, rutas, proceso, bioseguridad, paraQuien, porQue,
+  cobertura, faq, contacto, contact, whatsapp, images,
+} from '../data/content';
+import { homeSchema } from '../data/schema';
+
+const [card1, card2, card3, card4] = servicios.cards;
+---
+<Layout title={site.title} jsonLd={homeSchema}>
+  <Header />
+
+  <main id="contenido" tabindex="-1" class="outline-none">
+    <!-- 1. Hero -->
+    <section id="inicio" class="relative overflow-hidden bg-white pt-18 lg:pt-20" aria-labelledby="inicio-titulo">
+      <div class="container-bc lg:grid lg:min-h-[min(46rem,calc(100svh-5rem))] lg:grid-cols-12 lg:items-center">
+        <div class="py-12 sm:py-16 lg:col-span-6 lg:py-20 lg:pr-6">
+          <p class="eyebrow">{hero.eyebrow}</p>
+          <h1 id="inicio-titulo" class="mt-5 text-[2.125rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-verde sm:text-5xl lg:text-[3.5rem]">
+            {hero.h1}
+          </h1>
+          <p class="lead mt-6 max-w-xl">{hero.text}</p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#contacto" class="btn btn-primary">{hero.primary}<Icon name="arrow" class="size-5" /></a>
+            <a href={whatsapp.general} target="_blank" rel="noopener" class="btn btn-secondary">
+              <Icon name="whatsapp" class="size-5" />{hero.secondary}
+            </a>
+          </div>
+          <ul class="mt-10 flex flex-col gap-3 border-t border-bruma pt-6 text-[0.9375rem] font-medium text-grafito sm:flex-row sm:flex-wrap sm:gap-x-7">
+            {hero.indicators.map((i) => (
+              <li class="flex items-center gap-2.5">
+                <span class="inline-flex size-6 items-center justify-center rounded-full bg-menta/25 text-verde">
+                  <Icon name="check" class="size-4" />
+                </span>
+                {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="relative h-72 sm:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[48%]" style="--ar: 0.94">
+        <Photo
+          name={images.hero.name}
+          alt={images.hero.alt}
+          priority
+          sizes="(min-width: 1024px) 48vw, 100vw"
+          class="block size-full lg:cut-left"
+          imgClass="size-full object-cover object-[40%_55%]"
+        />
+      </div>
+    </section>
+
+    <!-- 2. Contexto -->
+    <section id="contexto" class="on-dark section relative overflow-hidden bg-petroleo text-white" aria-labelledby="contexto-titulo">
+      <div class="container-bc relative grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:col-span-5">
+          <h2 id="contexto-titulo" class="h2">{contexto.h2}</h2>
+          <SpeedLines class="mt-12 hidden w-64 lg:block" />
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7 lg:pt-2">
+          <p class="lead">{contexto.text}</p>
+          <ul class="mt-8 space-y-5">
+            {contexto.list.map((item) => (
+              <li class="flex gap-4 text-[1.0625rem] leading-relaxed text-white">
+                <span class="mt-3 h-1 w-6 shrink-0 -skew-x-12 bg-menta" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="mt-10 border-t border-white/15 pt-8 font-display text-xl font-bold leading-snug text-white sm:text-2xl">{contexto.close}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Servicios -->
+    <section id="servicios" class="section bg-niebla" aria-labelledby="servicios-titulo">
+      <div class="container-bc">
+        <div class="max-w-3xl">
+          <p class="eyebrow">{servicios.eyebrow}</p>
+          <h2 id="servicios-titulo" class="h2 mt-4">{servicios.h2}</h2>
+          <p class="lead mt-6">{servicios.intro}</p>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
+          {[card1, card2, card3].map((c) => (
+            <article class="rounded-2xl bg-white p-7 ring-1 ring-bruma lg:p-8">
+              <span class="inline-flex size-12 items-center justify-center rounded-xl bg-verde text-white">
+                <Icon name={c.icon} class="size-6" />
+              </span>
+              <h3 class="mt-6 text-xl font-bold leading-snug text-petroleo">{c.h3}</h3>
+              <p class="mt-3 text-gris">{c.text}</p>
+            </article>
+          ))}
+          <article class="overflow-hidden rounded-2xl bg-white ring-1 ring-bruma md:col-span-2 lg:col-span-3 lg:grid lg:grid-cols-2">
+            <div class="p-7 lg:p-10 lg:pr-4 lg:self-center">
+              <span class="inline-flex size-12 items-center justify-center rounded-xl bg-verde text-white">
+                <Icon name={card4.icon} class="size-6" />
+              </span>
+              <h3 class="mt-6 text-xl font-bold leading-snug text-petroleo lg:text-2xl">{card4.h3}</h3>
+              <p class="mt-3 max-w-md text-gris">{card4.text}</p>
+            </div>
+            <div class="relative h-56 sm:h-72 lg:h-full lg:min-h-80" style="--ar: 1.6">
+              <Photo
+                name={images.moto.name}
+                alt={images.moto.alt}
+                sizes="(min-width: 1024px) 38vw, 100vw"
+                class="block size-full lg:cut-left"
+                imgClass="size-full object-cover object-[40%_60%]"
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Rutas a la medida -->
+    <section id="rutas" class="section bg-white" aria-labelledby="rutas-titulo">
+      <div class="container-bc grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="relative order-last lg:order-first" style="--ar: 1.2">
+          <Photo
+            name={images.ruta.name}
+            alt={images.ruta.alt}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            class="cut-right block aspect-[6/5] overflow-hidden rounded-l-2xl"
+            imgClass="size-full object-cover object-[45%_50%]"
+          />
+        </div>
+        <div>
+          <p class="eyebrow">{rutas.eyebrow}</p>
+          <h2 id="rutas-titulo" class="h2 mt-4">{rutas.h2}</h2>
+          <p class="lead mt-6">{rutas.text}</p>
+          <ul class="mt-8 space-y-4">
+            {rutas.list.map((item) => (
+              <li class="flex gap-3.5">
+                <span class="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-verde text-white">
+                  <Icon name="check" class="size-4" />
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={whatsapp.rutas} target="_blank" rel="noopener" class="btn btn-primary mt-10">
+            <Icon name="whatsapp" class="size-5" />{rutas.button}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Cómo funciona -->
+    <section id="como-funciona" class="section bg-niebla" aria-labelledby="proceso-titulo">
+      <div class="container-bc">
+        <div class="max-w-3xl">
+          <p class="eyebrow">{proceso.eyebrow}</p>
+          <h2 id="proceso-titulo" class="h2 mt-4">{proceso.h2}</h2>
+        </div>
+        <ol class="relative mt-12 grid gap-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8">
+          <span class="absolute left-5 top-5 hidden h-1 w-[calc(100%-2.5rem)] bg-acero/70 lg:block" aria-hidden="true">
+            <span class="block h-full w-full origin-left bg-menta"></span>
+          </span>
+          {proceso.steps.map((s, i) => (
+            <li class="relative">
+              <span class="relative inline-flex size-11 items-center justify-center rounded-full bg-petroleo font-mono text-sm font-medium text-white ring-8 ring-niebla">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-6 text-xl font-bold text-petroleo">{s.h3}</h3>
+              <p class="mt-2.5 text-gris">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. Bioseguridad -->
+    <section id="bioseguridad" class="on-dark section overflow-hidden bg-petroleo text-white" aria-labelledby="bioseguridad-titulo">
+      <div class="container-bc grid gap-12 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-5">
+          <p class="eyebrow">{bioseguridad.eyebrow}</p>
+          <h2 id="bioseguridad-titulo" class="h2 mt-4">{bioseguridad.h2}</h2>
+          <p class="lead mt-6">{bioseguridad.intro}</p>
+          <div class="mt-10 hidden lg:block" style="--ar: 0.75">
+            <Photo
+              name={images.mensajero.name}
+              alt={images.mensajero.alt}
+              sizes="34vw"
+              class="cut-right block aspect-[3/4] overflow-hidden rounded-l-2xl"
+              imgClass="size-full object-cover object-[50%_40%]"
+            />
+          </div>
+        </div>
+        <div class="lg:col-span-7 lg:self-center">
+          <div class="mb-10 lg:hidden" style="--ar: 1.33">
+            <Photo
+              name={images.mensajero.name}
+              alt={images.mensajero.alt}
+              sizes="100vw"
+              class="cut-right block aspect-[4/3] overflow-hidden rounded-l-2xl"
+              imgClass="size-full object-cover object-[50%_35%]"
+            />
+          </div>
+          <div class="grid gap-x-10 gap-y-12 sm:grid-cols-2">
+            {bioseguridad.pillars.map((p) => (
+              <div class="border-t border-white/15 pt-7">
+                <Icon name={p.icon} class="size-8 text-menta" />
+                <h3 class="mt-5 text-xl font-bold text-white">{p.h3}</h3>
+                <p class="mt-3 text-sobre-oscuro">{p.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Para quién -->
+    <section id="para-quien" class="section bg-white" aria-labelledby="para-quien-titulo">
+      <div class="container-bc grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p class="eyebrow">{paraQuien.eyebrow}</p>
+          <h2 id="para-quien-titulo" class="h2 mt-4">{paraQuien.h2}</h2>
+          <ul class="mt-10 divide-y divide-bruma border-y border-bruma">
+            {paraQuien.profiles.map((p) => (
+              <li class="flex gap-5 py-6">
+                <span class="inline-flex size-12 shrink-0 items-center justify-center rounded-xl bg-niebla text-verde">
+                  <Icon name={p.icon} class="size-6" />
+                </span>
+                <div class="text-gris">
+                  <h3 class="inline font-display text-lg font-bold text-petroleo">{p.h3}:</h3> <p class="inline">{p.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div style="--ar: 1.78">
+          <Photo
+            name={images.laboratorio.name}
+            alt={images.laboratorio.alt}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            class="cut-left block aspect-[16/9] overflow-hidden rounded-r-2xl lg:aspect-[4/5]"
+            imgClass="size-full object-cover object-[70%_50%]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Por qué BioCare -->
+    <section id="por-que-biocare" class="on-dark section relative overflow-hidden bg-verde text-white" aria-labelledby="por-que-titulo">
+      <div class="container-bc relative">
+        <div class="flex items-start justify-between gap-8">
+          <h2 id="por-que-titulo" class="h2">{porQue.h2}</h2>
+          <SpeedLines class="hidden w-56 shrink-0 sm:block lg:w-64" />
+        </div>
+        <ul class="mt-12 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8">
+          {porQue.benefits.map((b) => (
+            <li>
+              <span class="inline-flex size-12 items-center justify-center rounded-xl bg-white/12 text-white ring-1 ring-white/25">
+                <Icon name={b.icon} class="size-6" />
+              </span>
+              <div class="mt-5 text-[1.0625rem] leading-relaxed text-white">
+                <h3 class="inline font-display text-lg font-bold text-white">{b.h3}:</h3> <p class="inline">{b.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. Cobertura -->
+    <section id="cobertura" class="section bg-niebla" aria-labelledby="cobertura-titulo">
+      <div class="container-bc grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <h2 id="cobertura-titulo" class="h2">{cobertura.h2}</h2>
+          <p class="lead mt-6">{cobertura.text}</p>
+        </div>
+        <div class="cut-left rounded-r-2xl bg-petroleo px-8 py-10 pl-[calc(2rem+12%)] sm:py-12 lg:pl-[calc(2.5rem+14%)]" style="--ar: 1.5">
+          <ul class="relative space-y-5" aria-label="Ciudades">
+            <span class="absolute bottom-3 left-[0.6875rem] top-3 w-0.5 bg-menta/50" aria-hidden="true"></span>
+            {cobertura.cities.map((c) => (
+              <li class="relative flex items-center gap-4 text-lg font-semibold text-white">
+                <span class="relative inline-flex size-6 items-center justify-center rounded-full bg-petroleo ring-2 ring-menta">
+                  <span class="size-2 rounded-full bg-menta"></span>
+                </span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Preguntas frecuentes -->
+    <section id="preguntas" class="section bg-white" aria-labelledby="preguntas-titulo">
+      <div class="container-bc grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <h2 id="preguntas-titulo" class="h2 lg:sticky lg:top-32">{faq.h2}</h2>
+        </div>
+        <div class="lg:col-span-8">
+          <div class="divide-y divide-bruma border-y border-bruma">
+            {faq.items.map((item) => (
+              <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
+                  <h3 class="text-lg font-bold leading-snug text-petroleo sm:text-xl">{item.q}</h3>
+                  <span class="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-niebla text-verde transition-transform duration-300 group-open:rotate-180">
+                    <Icon name="chevron" class="size-5" />
+                  </span>
+                </summary>
+                <p class="max-w-2xl pb-7 pr-12 text-gris">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Contacto -->
+    <section id="contacto" class="section bg-niebla" aria-labelledby="contacto-titulo">
+      <div class="container-bc grid gap-12 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-5">
+          <p class="eyebrow">{contacto.eyebrow}</p>
+          <h2 id="contacto-titulo" class="h2 mt-4">{contacto.h2}</h2>
+          <p class="lead mt-6">{contacto.text}</p>
+
+          <aside class="on-dark mt-10 overflow-hidden rounded-2xl bg-petroleo text-white" aria-label="Datos de contacto">
+            <Photo
+              name={images.personal.name}
+              alt={images.personal.alt}
+              sizes="(min-width: 1024px) 34vw, 100vw"
+              class="block aspect-[16/10] overflow-hidden"
+              imgClass="size-full object-cover object-[50%_22%]"
+            />
+            <dl class="grid gap-5 p-7 sm:grid-cols-2 lg:grid-cols-1 lg:p-8">
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wider text-sobre-oscuro">WhatsApp</dt>
+                <dd class="mt-1">
+                  <a href={whatsapp.general} target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-semibold text-white underline-offset-4 hover:underline">
+                    <Icon name="whatsapp" class="size-5 text-menta" />{contact.phoneDisplay}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wider text-sobre-oscuro">Correo</dt>
+                <dd class="mt-1">
+                  <a href={`mailto:${contact.email}`} class="break-all font-semibold text-white underline-offset-4 hover:underline">{contact.email}</a>
+                </dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wider text-sobre-oscuro">Horario de atención</dt>
+                <dd class="mt-1 font-semibold">{contact.hoursSidebar}</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wider text-sobre-oscuro">Cobertura</dt>
+                <dd class="mt-1 font-semibold">{contact.coverage}</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+        <div class="lg:col-span-7">
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

@@ -1,0 +1,104 @@
+{
+  "transporte-muestras-biologicas-queretaro-biocare": [
+    {
+      "file": "transporte-muestras-biologicas-queretaro-biocare-640",
+      "width": 640,
+      "height": 409
+    },
+    {
+      "file": "transporte-muestras-biologicas-queretaro-biocare-960",
+      "width": 960,
+      "height": 614
+    },
+    {
+      "file": "transporte-muestras-biologicas-queretaro-biocare",
+      "width": 1280,
+      "height": 819
+    }
+  ],
+  "ruta-programada-recoleccion-muestras": [
+    {
+      "file": "ruta-programada-recoleccion-muestras-640",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "file": "ruta-programada-recoleccion-muestras-960",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "file": "ruta-programada-recoleccion-muestras",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "moto-recoleccion-muestras-clinicas": [
+    {
+      "file": "moto-recoleccion-muestras-clinicas-640",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "file": "moto-recoleccion-muestras-clinicas-960",
+      "width": 960,
+      "height": 640
+    },
+    {
+      "file": "moto-recoleccion-muestras-clinicas",
+      "width": 1280,
+      "height": 853
+    }
+  ],
+  "mensajero-hielera-temperatura-controlada": [
+    {
+      "file": "mensajero-hielera-temperatura-controlada-640",
+      "width": 640,
+      "height": 1138
+    },
+    {
+      "file": "mensajero-hielera-temperatura-controlada-960",
+      "width": 960,
+      "height": 1707
+    },
+    {
+      "file": "mensajero-hielera-temperatura-controlada",
+      "width": 1008,
+      "height": 1792
+    }
+  ],
+  "entrega-muestras-laboratorio-clinico": [
+    {
+      "file": "entrega-muestras-laboratorio-clinico-640",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "file": "entrega-muestras-laboratorio-clinico-960",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "file": "entrega-muestras-laboratorio-clinico",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "personal-biocare-solucion-logistica": [
+    {
+      "file": "personal-biocare-solucion-logistica-640",
+      "width": 640,
+      "height": 960
+    },
+    {
+      "file": "personal-biocare-solucion-logistica-960",
+      "width": 960,
+      "height": 1440
+    },
+    {
+      "file": "personal-biocare-solucion-logistica",
+      "width": 1152,
+      "height": 1728
+    }
+  ]
+}

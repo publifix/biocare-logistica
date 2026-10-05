@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SpeedLines from '../components/SpeedLines.astro';
+import { notFound } from '../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Layout title="Página no encontrada | BioCare Solución Logística" robots="noindex, follow" canonical={false}>
+  <Header />
+  <main id="contenido" tabindex="-1" class="flex min-h-[80svh] items-center bg-niebla pb-24 pt-36 outline-none">
+    <div class="container-bc">
+      <SpeedLines class="w-36" />
+      <h1 class="mt-10 text-4xl font-extrabold tracking-[-0.03em] text-verde sm:text-6xl">{notFound.h1}</h1>
+      <p class="lead mt-5">{notFound.text}</p>
+      <a href={base} class="btn btn-primary mt-10">{notFound.button}</a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

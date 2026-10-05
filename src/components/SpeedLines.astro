@@ -1,0 +1,19 @@
+---
+// Líneas de velocidad: 3 o 4 trazos en Menta Vital con extremos cortados a la inclinación del wordmark (12°).
+interface Props {
+  count?: 3 | 4;
+  class?: string;
+}
+const { count = 4, class: className = 'w-40' } = Astro.props;
+const h = 10;
+const gap = 10;
+const skew = h * 0.2126; // tan 12°
+const widths = count === 4 ? [200, 168, 136, 104] : [200, 160, 120];
+const total = widths.length * h + (widths.length - 1) * gap;
+---
+<svg class={className} viewBox={`0 0 ${200 + skew} ${total}`} fill="#3DDBA4" aria-hidden="true" focusable="false">
+  {widths.map((w, i) => {
+    const y = i * (h + gap);
+    return <polygon points={`${skew},${y} ${w + skew},${y} ${w},${y + h} 0,${y + h}`} />;
+  })}
+</svg>

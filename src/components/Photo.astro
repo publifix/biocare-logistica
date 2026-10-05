@@ -1,0 +1,32 @@
+---
+// Foto responsiva AVIF/WebP con width/height declarados (generadas por scripts/optimize-images.mjs).
+import manifest from '../data/images.json';
+
+interface Props {
+  name: keyof typeof manifest;
+  alt: string;
+  sizes?: string;
+  priority?: boolean;
+  class?: string;
+  imgClass?: string;
+}
+
+const { name, alt, sizes = '100vw', priority = false, class: className, imgClass } = Astro.props;
+const variants = manifest[name];
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const largest = variants[variants.length - 1];
+const srcset = (ext: string) => variants.map((v) => `${base}img/${v.file}.${ext} ${v.width}w`).join(', ');
+---
+<picture class={className}>
+  <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />
+  <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />
+  <img
+    src={`${base}img/${largest.file}.webp`}
+    width={largest.width}
+    height={largest.height}
+    alt={alt}
+    class={imgClass}
+    decoding="async"
+    {...(priority ? { fetchpriority: 'high', loading: 'eager' } : { loading: 'lazy' })}
+  />
+</picture>

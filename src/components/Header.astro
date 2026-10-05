@@ -1,0 +1,108 @@
+---
+import Icon from './Icon.astro';
+import { header, whatsapp } from '../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const home = (hash: string) => `${base}${hash}`;
+---
+<a
+  href="#contenido"
+  class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-verde focus:px-4 focus:py-3 focus:font-semibold focus:text-white"
+>
+  {header.skipLink}
+</a>
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-bruma bg-white/95 backdrop-blur-sm" data-header>
+  <div class="container-bc flex h-18 items-center justify-between gap-6 lg:h-20">
+    <a href={home('#inicio')} class="shrink-0 py-2">
+      <img
+        src={`${base}brand/biocare-logo-verde-400.webp`}
+        srcset={`${base}brand/biocare-logo-verde-200.webp 200w, ${base}brand/biocare-logo-verde-400.webp 400w`}
+        sizes="200px"
+        width="400"
+        height="71"
+        alt={header.logoAlt}
+        class="h-auto w-[180px] lg:w-[196px]"
+      />
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {header.menu.map((item) => (
+          <li>
+            <a
+              href={home(item.href)}
+              class="rounded-md px-3 py-2 text-[0.9375rem] font-medium text-grafito transition-colors hover:bg-niebla hover:text-verde"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href={home(header.cta.href)} class="btn btn-primary hidden min-h-11 px-5 text-[0.9375rem] sm:inline-flex">
+        {header.cta.label}
+      </a>
+      <button
+        type="button"
+        class="inline-flex size-12 items-center justify-center rounded-md text-petroleo hover:bg-niebla lg:hidden"
+        aria-expanded="false"
+        aria-controls="menu-movil"
+        aria-label={header.openMenu}
+        data-label-open={header.openMenu}
+        data-label-close={header.closeMenu}
+        data-menu-toggle
+      >
+        <Icon name="menu" class="size-7" />
+      </button>
+    </div>
+  </div>
+
+  <nav id="menu-movil" aria-label="Móvil" class="hidden border-t border-bruma bg-white lg:hidden" data-menu>
+    <div class="container-bc pb-6 pt-2">
+      <ul class="divide-y divide-bruma">
+        {header.menu.map((item) => (
+          <li>
+            <a href={home(item.href)} class="block py-4 text-lg font-medium text-grafito hover:text-verde" data-menu-link>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-4 grid gap-3">
+        <a href={home(header.cta.href)} class="btn btn-primary w-full" data-menu-link>{header.cta.label}</a>
+        <a href={whatsapp.general} class="btn btn-secondary w-full" target="_blank" rel="noopener">
+          <Icon name="whatsapp" class="size-5" />
+          {header.mobileWhatsapp}
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+  if (toggle && menu) {
+    const icon = toggle.querySelector('svg');
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '');
+      menu.classList.toggle('hidden', !open);
+      if (icon) {
+        icon.innerHTML = open ? '<path d="M6 6l12 12M18 6 6 18"/>' : '<path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17"/>';
+      }
+    };
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    matchMedia('(min-width: 1024px)').addEventListener('change', (e) => e.matches && setOpen(false));
+  }
+</script>

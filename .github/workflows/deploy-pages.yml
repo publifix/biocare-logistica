@@ -25,20 +25,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
-      - name: Build site
-        run: |
-          mkdir _site
-          rsync -a \
-            --exclude '.git' --exclude '.github' --exclude '.claude' \
-            --exclude '_site' --exclude '*.pdf' --exclude 'README.md' \
-            ./ _site/
-          touch _site/.nojekyll
+      - run: npm ci
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build Astro site
+        run: npm run build
+        env:
+          # Sitio de vista previa en publifix.github.io/<repo>/; el canónico sigue siendo biocare.com.mx.
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          PUBLIC_FORM_ENDPOINT: ${{ vars.PUBLIC_FORM_ENDPOINT }}
+
+      - name: Validate build
+        run: node scripts/validate-site.mjs
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: dist
 
       - id: deployment
         uses: actions/deploy-pages@v4
