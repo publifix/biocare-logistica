@@ -1,6 +1,6 @@
 # BioCare Solución Logística — Landing
 
-Landing de BioCare Solución Logística (recolección y transporte de muestras clínicas y medicamentos en Querétaro y el Bajío).
+Landing de BioCare Solución Logística (recolección y transporte de muestras clínicas y medicamentos en Querétaro, el Bajío y CDMX).
 Astro (salida estática) + Tailwind CSS 4. Contenido: `BioCare Solución Logística — Textos web y SEO (landing).docx`, transcrito palabra por palabra en `src/data/content.ts`.
 
 ## Comandos

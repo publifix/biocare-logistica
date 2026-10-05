@@ -6,15 +6,15 @@ export const site = {
   name: 'BioCare Solución Logística',
   shortName: 'BioCare',
   url: 'https://biocare.com.mx/',
-  title: 'Transporte de muestras biológicas en Querétaro | BioCare',
+  title: 'Transporte de muestras biológicas Querétaro y CDMX | BioCare',
   description:
-    'Recolección y traslado de muestras clínicas y medicamentos en Querétaro. Rutas programadas, temperatura controlada y trazabilidad de clínica a laboratorio.',
+    'Recolección y traslado de muestras clínicas y medicamentos en Querétaro, el Bajío y CDMX. Rutas programadas, temperatura controlada y trazabilidad.',
   robots: 'index, follow, max-image-preview:large',
   themeColor: '#0A7E7A',
   og: {
     title: 'BioCare — Muestras seguras, a tiempo, en cada trayecto',
     description:
-      'Rutas programadas de recolección y traslado de muestras clínicas y medicamentos para laboratorios, clínicas y hospitales en Querétaro y el Bajío.',
+      'Rutas programadas de recolección y traslado de muestras clínicas y medicamentos para laboratorios, clínicas y hospitales en Querétaro, el Bajío y CDMX.',
     image: '/og/biocare-og-1200x630.jpg',
     imageAlt: 'Camioneta de BioCare Solución Logística para transporte de muestras clínicas',
   },
@@ -27,7 +27,7 @@ export const contact = {
   email: 'contacto@biocare.com.mx',
   hours: 'Lunes a sábado, 7:00 a 20:00',
   hoursSidebar: 'lunes a sábado, 7:00 a 20:00',
-  coverage: 'Querétaro y el Bajío',
+  coverage: 'Querétaro, el Bajío y CDMX',
 };
 
 const WA = 'https://wa.me/524422335566?text=';
@@ -183,8 +183,8 @@ export const porQue = {
 };
 
 export const cobertura = {
-  h2: 'Cobertura en Querétaro y el Bajío',
-  text: 'Operamos rutas de recolección y traslado en Querétaro y el Bajío, y conectamos sucursales, centros de toma y laboratorios entre las ciudades de la región. ¿Tu operación está fuera de esta zona? Escríbenos y revisamos la ruta.',
+  h2: 'Cobertura en Querétaro, el Bajío y CDMX',
+  text: 'Operamos rutas de recolección y traslado en Querétaro, el Bajío y CDMX, y conectamos sucursales, centros de toma y laboratorios entre las ciudades de la región. ¿Tu operación está fuera de esta zona? Escríbenos y revisamos la ruta.',
   cities: ['Querétaro', 'San Juan del Río', 'Celaya', 'Salamanca', 'Irapuato', 'León', 'CDMX'],
 };
 
@@ -213,7 +213,7 @@ export const faq = {
     },
     {
       q: '¿En qué zonas tienen servicio?',
-      a: 'En Querétaro y el Bajío, incluidas ciudades como San Juan del Río, Celaya, Salamanca, Irapuato y León. Para otras zonas, consúltanos.',
+      a: 'En Querétaro, el Bajío y CDMX, incluidas ciudades como San Juan del Río, Celaya, Salamanca, Irapuato y León. Para otras zonas, consúltanos.',
     },
     {
       q: '¿Cómo se cotiza el servicio?',
@@ -261,7 +261,7 @@ export const form = {
 
 export const footer = {
   logoAlt: 'BioCare Solución Logística',
-  description: 'Recolección y transporte de muestras clínicas y medicamentos con temperatura controlada en Querétaro y el Bajío.',
+  description: 'Recolección y transporte de muestras clínicas y medicamentos con temperatura controlada en Querétaro, el Bajío y CDMX.',
   servicios: {
     title: 'Servicios',
     links: [

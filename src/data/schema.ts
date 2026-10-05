@@ -22,7 +22,7 @@ export const homeSchema = {
       '@id': 'https://biocare.com.mx/#business',
       name: 'BioCare Solución Logística',
       description:
-        'Recolección y transporte de muestras clínicas y medicamentos con rutas programadas, temperatura controlada y cadena de custodia en Querétaro y el Bajío.',
+        'Recolección y transporte de muestras clínicas y medicamentos con rutas programadas, temperatura controlada y cadena de custodia en Querétaro, el Bajío y CDMX.',
       url: 'https://biocare.com.mx/',
       image: 'https://biocare.com.mx/og/biocare-og-1200x630.jpg',
       telephone: contact.phoneSchema,
@@ -59,7 +59,7 @@ export const homeSchema = {
       name: 'Transporte de muestras biológicas y medicamentos',
       serviceType: 'Logística clínica',
       provider: { '@id': 'https://biocare.com.mx/#business' },
-      areaServed: 'Querétaro y el Bajío, México',
+      areaServed: 'Querétaro, el Bajío y CDMX, México',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Servicios BioCare',
