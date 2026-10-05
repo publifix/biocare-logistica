@@ -63,7 +63,7 @@ export const header = {
 export const hero = {
   // Ajuste solicitado por el cliente: hero más ligero. Se conservan el H1 (keyword principal),
   // los botones y los indicadores; el párrafo se resume y el tagline sale del hero (sigue en OG y footer de marca).
-  h1: 'Transporte de muestras biológicas en Querétaro, a tiempo y con trazabilidad',
+  h1: 'Transporte de muestras biológicas, a tiempo y con trazabilidad',
   text: 'Recolectamos las muestras de tus sucursales y centros de toma y las llevamos directo a tu laboratorio.',
   primary: 'Agenda tu recolección',
   secondary: 'Escríbenos por WhatsApp',
@@ -185,7 +185,7 @@ export const porQue = {
 export const cobertura = {
   h2: 'Cobertura en Querétaro y el Bajío',
   text: 'Operamos rutas de recolección y traslado en Querétaro y el Bajío, y conectamos sucursales, centros de toma y laboratorios entre las ciudades de la región. ¿Tu operación está fuera de esta zona? Escríbenos y revisamos la ruta.',
-  cities: ['Querétaro', 'San Juan del Río', 'Celaya', 'Salamanca', 'Irapuato', 'León'],
+  cities: ['Querétaro', 'San Juan del Río', 'Celaya', 'Salamanca', 'Irapuato', 'León', 'CDMX'],
 };
 
 export const faq = {
@@ -285,6 +285,7 @@ export const footer = {
   legal: '© 2026 BioCare Solución Logística. Todos los derechos reservados.',
   privacy: 'Aviso de privacidad',
   credit: 'Sitio por LABS by Publifix',
+  creditUrl: 'https://labs.publifix.net',
 };
 
 export const notFound = {

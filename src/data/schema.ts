@@ -43,6 +43,7 @@ export const homeSchema = {
         { '@type': 'City', name: 'Salamanca' },
         { '@type': 'City', name: 'Irapuato' },
         { '@type': 'City', name: 'León' },
+        { '@type': 'City', name: 'Ciudad de México' },
       ],
       openingHoursSpecification: [
         {
