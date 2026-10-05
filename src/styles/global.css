@@ -130,6 +130,18 @@
   .btn-secondary { background: #fff; color: var(--color-verde); box-shadow: inset 0 0 0 2px var(--color-verde); }
   .btn-secondary:hover { background: var(--color-niebla); }
   .btn-light { background: #fff; color: var(--color-petroleo); }
+  .btn-outline-light { color: #fff; box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.55); }
+  .btn-outline-light:hover { background: rgb(255 255 255 / 0.1); box-shadow: inset 0 0 0 2px #fff; }
+
+  /* Hero: foto a sangre; en escritorio el panel Petróleo se corta a 12° sobre la foto,
+     en móvil la foto termina en diagonal de 12° sobre el panel. */
+  .hero { --hero-h: min(46rem, calc(100svh - 5rem)); }
+  .hero-photo { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 21.26vw)); }
+  @media (min-width: 1024px) {
+    .hero-photo { clip-path: none; }
+    .hero { min-height: calc(var(--hero-h) + 5rem); }
+    .hero-panel { clip-path: polygon(0 0, 100% 0, calc(100% - var(--hero-h) * 0.2126) 100%, 0 100%); }
+  }
   .btn-light:hover { background: var(--color-bruma); }
 
 }

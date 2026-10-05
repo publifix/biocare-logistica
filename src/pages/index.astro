@@ -14,52 +14,54 @@ import {
 import { homeSchema } from '../data/schema';
 
 const [card1, card2, card3, card4] = servicios.cards;
+// "…en Querétaro, a tiempo y con trazabilidad": la segunda parte se resalta en Menta Vital.
+const cut = hero.h1.indexOf(', ') + 2;
+const heroLead = hero.h1.slice(0, cut);
+const heroTail = hero.h1.slice(cut);
 ---
 <Layout title={site.title} jsonLd={homeSchema}>
   <Header />
 
   <main id="contenido" tabindex="-1" class="outline-none">
     <!-- 1. Hero -->
-    <section id="inicio" class="relative overflow-hidden bg-white pt-18 lg:pt-20" aria-labelledby="inicio-titulo">
-      <div class="container-bc lg:grid lg:min-h-[min(46rem,calc(100svh-5rem))] lg:grid-cols-12 lg:items-center">
-        <div class="py-12 sm:py-16 lg:col-span-6 lg:py-20 lg:pr-6">
-          <p class="eyebrow">{hero.eyebrow}</p>
-          <h1 id="inicio-titulo" class="mt-5 text-[2.125rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-verde sm:text-5xl lg:text-[3.5rem]">
-            {hero.h1}
+    <section id="inicio" class="hero on-dark relative isolate overflow-hidden bg-petroleo pt-18 text-white lg:pt-20" aria-labelledby="inicio-titulo">
+      <div class="hero-photo relative h-[34svh] min-h-56 max-h-[26rem] sm:h-[42svh] lg:absolute lg:inset-0 lg:top-20 lg:h-auto lg:max-h-none">
+        <Photo
+          name={images.hero.name}
+          alt={images.hero.alt}
+          priority
+          sizes="100vw"
+          class="block size-full"
+          imgClass="size-full object-cover object-[78%_60%] lg:object-[70%_50%]"
+        />
+      </div>
+      <div class="hero-panel absolute inset-y-0 left-0 top-20 -z-0 hidden w-[57%] bg-petroleo lg:block" aria-hidden="true"></div>
+      <div class="container-bc relative lg:flex lg:h-(--hero-h) lg:items-center">
+        <div class="pb-14 pt-4 sm:pb-16 sm:pt-8 lg:max-w-[32rem] lg:py-0 xl:max-w-[34rem]">
+          <h1 id="inicio-titulo" class="text-[2.125rem] font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-[3rem] xl:text-[3.25rem]">
+            {heroLead}<span class="text-menta">{heroTail}</span>
           </h1>
-          <p class="lead mt-6 max-w-xl">{hero.text}</p>
+          <p class="mt-6 max-w-md text-lg leading-relaxed text-sobre-oscuro">{hero.text}</p>
           <div class="mt-9 flex flex-col gap-3 sm:flex-row">
             <a href="#contacto" class="btn btn-primary">{hero.primary}<Icon name="arrow" class="size-5" /></a>
-            <a href={whatsapp.general} target="_blank" rel="noopener" class="btn btn-secondary">
+            <a href={whatsapp.general} target="_blank" rel="noopener" class="btn btn-outline-light">
               <Icon name="whatsapp" class="size-5" />{hero.secondary}
             </a>
           </div>
-          <ul class="mt-10 flex flex-col gap-3 border-t border-bruma pt-6 text-[0.9375rem] font-medium text-grafito sm:flex-row sm:flex-wrap sm:gap-x-7">
+          <ul class="mt-10 flex max-w-lg flex-wrap gap-x-6 gap-y-3 border-t border-white/15 pt-6 text-sm font-medium text-white" aria-label="Características del servicio">
             {hero.indicators.map((i) => (
-              <li class="flex items-center gap-2.5">
-                <span class="inline-flex size-6 items-center justify-center rounded-full bg-menta/25 text-verde">
-                  <Icon name="check" class="size-4" />
-                </span>
+              <li class="flex items-center gap-2">
+                <Icon name="check" class="size-4 text-menta" />
                 {i}
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <div class="relative h-72 sm:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[48%]" style="--ar: 0.94">
-        <Photo
-          name={images.hero.name}
-          alt={images.hero.alt}
-          priority
-          sizes="(min-width: 1024px) 48vw, 100vw"
-          class="block size-full lg:cut-left"
-          imgClass="size-full object-cover object-[40%_55%]"
-        />
-      </div>
     </section>
 
     <!-- 2. Contexto -->
-    <section id="contexto" class="on-dark section relative overflow-hidden bg-petroleo text-white" aria-labelledby="contexto-titulo">
+    <section id="contexto" class="section relative overflow-hidden bg-white" aria-labelledby="contexto-titulo">
       <div class="container-bc relative grid gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-5">
           <h2 id="contexto-titulo" class="h2">{contexto.h2}</h2>
@@ -69,13 +71,13 @@ const [card1, card2, card3, card4] = servicios.cards;
           <p class="lead">{contexto.text}</p>
           <ul class="mt-8 space-y-5">
             {contexto.list.map((item) => (
-              <li class="flex gap-4 text-[1.0625rem] leading-relaxed text-white">
+              <li class="flex gap-4 text-[1.0625rem] leading-relaxed text-grafito">
                 <span class="mt-3 h-1 w-6 shrink-0 -skew-x-12 bg-menta" aria-hidden="true"></span>
                 {item}
               </li>
             ))}
           </ul>
-          <p class="mt-10 border-t border-white/15 pt-8 font-display text-xl font-bold leading-snug text-white sm:text-2xl">{contexto.close}</p>
+          <p class="mt-10 border-t border-bruma pt-8 font-display text-xl font-bold leading-snug text-petroleo sm:text-2xl">{contexto.close}</p>
         </div>
       </div>
     </section>
@@ -91,11 +93,11 @@ const [card1, card2, card3, card4] = servicios.cards;
 
         <div class="mt-12 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
           {[card1, card2, card3].map((c) => (
-            <article class="rounded-2xl bg-white p-7 ring-1 ring-bruma lg:p-8">
-              <span class="inline-flex size-12 items-center justify-center rounded-xl bg-verde text-white">
+            <article class="rounded-2xl bg-white p-6 ring-1 ring-bruma sm:p-7 lg:p-8">
+              <span class="inline-flex size-11 items-center justify-center rounded-xl bg-verde text-white sm:size-12">
                 <Icon name={c.icon} class="size-6" />
               </span>
-              <h3 class="mt-6 text-xl font-bold leading-snug text-petroleo">{c.h3}</h3>
+              <h3 class="mt-5 text-xl font-bold leading-snug text-petroleo sm:mt-6">{c.h3}</h3>
               <p class="mt-3 text-gris">{c.text}</p>
             </article>
           ))}
@@ -302,8 +304,8 @@ const [card1, card2, card3, card4] = servicios.cards;
         </div>
         <div class="lg:col-span-8">
           <div class="divide-y divide-bruma border-y border-bruma">
-            {faq.items.map((item) => (
-              <details class="group">
+            {faq.items.map((item, i) => (
+              <details class="group" open={i === 0}>
                 <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
                   <h3 class="text-lg font-bold leading-snug text-petroleo sm:text-xl">{item.q}</h3>
                   <span class="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-niebla text-verde transition-transform duration-300 group-open:rotate-180">
@@ -320,13 +322,18 @@ const [card1, card2, card3, card4] = servicios.cards;
 
     <!-- 11. Contacto -->
     <section id="contacto" class="section bg-niebla" aria-labelledby="contacto-titulo">
-      <div class="container-bc grid gap-12 lg:grid-cols-12 lg:gap-14">
+      <div class="container-bc grid gap-10 lg:grid-cols-12 lg:gap-x-14 lg:gap-y-10">
         <div class="lg:col-span-5">
           <p class="eyebrow">{contacto.eyebrow}</p>
           <h2 id="contacto-titulo" class="h2 mt-4">{contacto.h2}</h2>
           <p class="lead mt-6">{contacto.text}</p>
 
-          <aside class="on-dark mt-10 overflow-hidden rounded-2xl bg-petroleo text-white" aria-label="Datos de contacto">
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+          <ContactForm />
+        </div>
+        <div class="lg:col-span-5 lg:row-start-2">
+          <aside class="on-dark overflow-hidden rounded-2xl bg-petroleo text-white" aria-label="Datos de contacto">
             <Photo
               name={images.personal.name}
               alt={images.personal.alt}
@@ -359,9 +366,6 @@ const [card1, card2, card3, card4] = servicios.cards;
               </div>
             </dl>
           </aside>
-        </div>
-        <div class="lg:col-span-7">
-          <ContactForm />
         </div>
       </div>
     </section>

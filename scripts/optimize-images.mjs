@@ -4,7 +4,7 @@ import sharp from 'sharp';
 import { writeFile } from 'node:fs/promises';
 
 const photos = [
-  ['scripts/sources/flotilla-manual.jpg', 'transporte-muestras-biologicas-queretaro-biocare'],
+  ['biocare-hero-image.jpg', 'transporte-muestras-biologicas-queretaro-biocare'],
   ['biocare-web-image-5.jpg', 'ruta-programada-recoleccion-muestras'],
   ['biocare-web-image-4.jpg', 'moto-recoleccion-muestras-clinicas'],
   ['biocare-web-image3.jpg', 'mensajero-hielera-temperatura-controlada'],

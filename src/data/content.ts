@@ -24,7 +24,7 @@ export const contact = {
   phoneDisplay: '442 233 5566',
   phoneE164: '+524422335566',
   phoneSchema: '+52 442 233 5566',
-  email: 'rrivera@biocare.com.mx',
+  email: 'contacto@biocare.com.mx',
   hours: 'Lunes a sábado, 7:00 a 20:00',
   hoursSidebar: 'lunes a sábado, 7:00 a 20:00',
   coverage: 'Querétaro y el Bajío',
@@ -61,9 +61,10 @@ export const header = {
 };
 
 export const hero = {
-  eyebrow: 'Muestras seguras, a tiempo, en cada trayecto.',
+  // Ajuste solicitado por el cliente: hero más ligero. Se conservan el H1 (keyword principal),
+  // los botones y los indicadores; el párrafo se resume y el tagline sale del hero (sigue en OG y footer de marca).
   h1: 'Transporte de muestras biológicas en Querétaro, a tiempo y con trazabilidad',
-  text: 'Recolectamos las muestras clínicas de tus sucursales, centros de toma y consultorios, y las llevamos directo a tu laboratorio de procesamiento. Rutas programadas, horarios fijos y manejo con temperatura controlada en cada traslado.',
+  text: 'Recolectamos las muestras de tus sucursales y centros de toma y las llevamos directo a tu laboratorio.',
   primary: 'Agenda tu recolección',
   secondary: 'Escríbenos por WhatsApp',
   indicators: ['Rutas programadas', 'Temperatura controlada', 'Cadena de custodia documentada'],
@@ -293,7 +294,7 @@ export const notFound = {
 };
 
 export const images = {
-  hero: { name: 'transporte-muestras-biologicas-queretaro-biocare', alt: 'Flotilla de camionetas de BioCare para el transporte de muestras biológicas en Querétaro' },
+  hero: { name: 'transporte-muestras-biologicas-queretaro-biocare', alt: 'Mensajero de BioCare en motocicleta con caja térmica durante el transporte de muestras biológicas en Querétaro' },
   ruta: { name: 'ruta-programada-recoleccion-muestras', alt: 'Camioneta de BioCare en una ruta programada de recolección de muestras clínicas' },
   moto: { name: 'moto-recoleccion-muestras-clinicas', alt: 'Motocicleta de BioCare con caja térmica para recolecciones de muestras fuera de ruta' },
   mensajero: { name: 'mensajero-hielera-temperatura-controlada', alt: 'Mensajero uniformado de BioCare con hielera para muestras con temperatura controlada' },

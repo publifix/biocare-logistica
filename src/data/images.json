@@ -3,17 +3,17 @@
     {
       "file": "transporte-muestras-biologicas-queretaro-biocare-640",
       "width": 640,
-      "height": 409
+      "height": 360
     },
     {
       "file": "transporte-muestras-biologicas-queretaro-biocare-960",
       "width": 960,
-      "height": 614
+      "height": 540
     },
     {
       "file": "transporte-muestras-biologicas-queretaro-biocare",
       "width": 1280,
-      "height": 819
+      "height": 720
     }
   ],
   "ruta-programada-recoleccion-muestras": [

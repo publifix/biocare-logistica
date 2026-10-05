@@ -7,7 +7,10 @@ import { whatsapp } from '../data/content';
   target="_blank"
   rel="noopener"
   aria-label={whatsapp.floatLabel}
-  class="group fixed bottom-5 right-5 z-40 inline-flex size-14 items-center justify-center rounded-full bg-verde text-white shadow-[0_8px_24px_-6px_rgba(7,59,72,0.45)] transition-colors hover:bg-verde-hondo lg:bottom-8 lg:right-8"
+  data-wa-float
+  data-hidden
+  inert
+  class="group fixed bottom-5 right-5 z-40 inline-flex size-14 items-center justify-center rounded-full bg-verde text-white shadow-[0_8px_24px_-6px_rgba(7,59,72,0.45)] transition-[background-color,opacity,transform] duration-300 hover:bg-verde-hondo data-[hidden]:pointer-events-none data-[hidden]:translate-y-4 data-[hidden]:opacity-0 lg:bottom-8 lg:right-8"
 >
   <Icon name="whatsapp" class="size-7" />
   <span
@@ -17,3 +20,18 @@ import { whatsapp } from '../data/content';
     {whatsapp.floatTooltip}
   </span>
 </a>
+
+<script>
+  // El hero ya tiene su botón de WhatsApp: el flotante aparece al salir del hero para no tapar los CTA.
+  const float = document.querySelector<HTMLElement>('[data-wa-float]');
+  const hero = document.getElementById('inicio');
+  if (float && hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      float.toggleAttribute('data-hidden', entry.isIntersecting);
+      float.toggleAttribute('inert', entry.isIntersecting);
+    }, { rootMargin: '0px 0px -40% 0px' }).observe(hero);
+  } else if (float) {
+    float.removeAttribute('data-hidden');
+    float.removeAttribute('inert');
+  }
+</script>

@@ -26,7 +26,7 @@ Logística clínica que cuida lo que transportas: recolección puntual, cadena d
 
 - Sitio: landing de una página con anclas + /aviso-de-privacidad (provisional) + 404. Fuente única de textos: `BioCare Solución Logística — Textos web y SEO (landing).docx`.
 - Cobertura: Querétaro y el Bajío (San Juan del Río, Celaya, Salamanca, Irapuato, León), por validar con el cliente.
-- Contacto (mock del manual, por validar): WhatsApp/tel. 442 233 5566 · rrivera@biocare.com.mx · lunes a sábado, 7:00 a 20:00. Debe coincidir en sitio, JSON-LD y Google Business Profile.
+- Contacto (mock del manual, por validar): WhatsApp/tel. 442 233 5566 · contacto@biocare.com.mx · lunes a sábado, 7:00 a 20:00. Debe coincidir en sitio, JSON-LD y Google Business Profile.
 - Formulario de contacto: envía a `PUBLIC_FORM_ENDPOINT`; WhatsApp como alternativa.
 
 ## Brand Commitments
